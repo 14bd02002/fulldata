@@ -1,21 +1,15 @@
 <?php
-
-/* @var $this yii\web\View */
-
-$this->title = 'База всех организаций Казахстана';
+use yii\helpers\Html;
+use yii\widgets\LinkPager;
 ?>
-<div class="site-index">
+<h1>Countries</h1>
+<ul>
+<?php foreach ($countries as $country): ?>
+    <li>
+        <?= Html::encode("{$country->name} ({$country->code})") ?>:
+        <?= $country->population ?>
+    </li>
+<?php endforeach; ?>
+</ul>
 
-    <div class="jumbotron">
-        <h1>Добро Пожаловать на сайт alldata.kz</h1>
-
-        <p class="lead">You have successfully created your Yii-powered application.</p>
-
-        <p><a class="btn btn-lg btn-success" href="http://www.yiiframework.com">Get started with Yii</a></p>
-    </div>
-
-    <div class="body-content">
-
-        
-    </div>
-</div>
+<?= LinkPager::widget(['pagination' => $pagination]) ?>
